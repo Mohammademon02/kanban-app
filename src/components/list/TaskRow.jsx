@@ -13,7 +13,6 @@ function TaskRow({ task, onClick }) {
     return `${month} ${day}`
   }
 
-  console.log("task", task)
   return (
     <div onClick={onClick} className="cursor-pointer hover:bg-gray-50 transition-colors">
       {/* Mobile View - Card Style */}

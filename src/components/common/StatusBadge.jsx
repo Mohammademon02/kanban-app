@@ -2,7 +2,6 @@ import { cn } from "../../lib/utils"
 
 export function StatusBadge({ label }) {
 
-    console.log(label)
     return (
         <span
             className={cn(
