@@ -1,10 +1,19 @@
 import Avatar from "../common/Avatar"
 import { Badge } from "../common/Badge"
 import { StatusBadge } from "../common/StatusBadge"
+import { CalenderIcon, CommentIcon } from "../Icons/icon-library"
 
 function TaskRow({ task, onClick }) {
 
-  console.log("task",task)
+  const formatDate = (dateStr) => {
+    if (!dateStr) return ""
+    const date = new Date(dateStr)
+    const month = date.toLocaleDateString("en-US", { month: "short" })
+    const day = date.getDate()
+    return `${month} ${day}`
+  }
+
+  console.log("task", task)
   return (
     <div onClick={onClick} className="cursor-pointer hover:bg-gray-50 transition-colors">
       {/* Mobile View - Card Style */}
@@ -23,15 +32,8 @@ function TaskRow({ task, onClick }) {
           <StatusBadge label={task.status} />
           <Badge label={task.priority} />
           <span className="flex items-center gap-1 text-xs text-gray-500">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            {task.dueDate}
+            <CalenderIcon />
+            {formatDate(task.dueDate)}
           </span>
         </div>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
@@ -40,14 +42,7 @@ function TaskRow({ task, onClick }) {
             <span className="text-sm text-gray-600">{task.assignee}</span>
           </div>
           <span className="flex items-center gap-1 text-xs text-gray-500">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-              />
-            </svg>
+            <CommentIcon />
             {task.comments}
           </span>
         </div>
@@ -70,16 +65,9 @@ function TaskRow({ task, onClick }) {
             label={task.priority} />
         </div>
         <div className="col-span-2 flex items-center gap-3 text-sm text-gray-600">
-          <span>{task.dueDate}</span>
+          <span>{formatDate(task.dueDate)}</span>
           <span className="flex items-center gap-1 text-gray-500">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-              />
-            </svg>
+            <CommentIcon />
             {task.comments}
           </span>
         </div>
