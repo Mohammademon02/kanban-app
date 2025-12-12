@@ -168,10 +168,7 @@ See `notes.txt` for detailed information about:
 - Safari (latest)
 - Edge (latest)
 
-## License
-
-Private - Gain Solutions Limited
 
 ## Author
 
-[Md Emon]
+Md Emon
