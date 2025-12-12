@@ -1,19 +1,19 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import KanbanPage from "./pages/KanbanPage"
+import ListViewPage from "./pages/ListViewPage"
 
 function App() {
 
   return (
-    <div>
-      {/* <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50">
         <Routes>
-          <Route path="/" element={<Navigate to="/kanban" />} />
+          <Route path="/" element={<Navigate to="/kanban" replace />} />
           <Route path="/kanban" element={<KanbanPage />} />
-          <Route path="/list-view" element={<ListViewPage />} />
+          <Route path="/list" element={<ListViewPage />} />
         </Routes>
-      </BrowserRouter> */}
-      <div>
-        kanban page
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 
