@@ -1,0 +1,181 @@
+TASK MANAGEMENT INTERFACE - IMPLEMENTATION NOTES
+================================================
+
+PROJECT OVERVIEW
+----------------
+This is a production-ready task management interface built with React.js and Tailwind CSS, 
+featuring both Kanban board and list view layouts with full responsive design.
+
+LAYOUT DECISIONS
+----------------
+
+1. Component Architecture:
+   - Separated concerns into logical folders: /components, /pages, /data, /lib
+   - Created reusable components (Avatar, Badge, StatusBadge, Container) for consistency
+   - Implemented icon library for centralized SVG management
+   - Used composition pattern for complex components (TaskDrawer, TopBar)
+
+2. Spacing & Typography System:
+   - Consistent spacing scale using Tailwind utilities (p-2, p-3, p-4, gap-2, gap-3, gap-4)
+   - Typography hierarchy: text-xs (labels), text-sm (body), text-lg (headings)
+   - Maintained 4px base unit for all spacing decisions
+   - Used consistent border-radius (rounded-md, rounded-lg) throughout
+
+3. Color Palette:
+   - Gray scale for neutral elements (gray-50 to gray-900)
+   - Blue for primary actions (blue-500, blue-600)
+   - Status colors: gray (backlog), blue (in-progress), yellow (review), green (done)
+   - Priority colors: gray (low), blue (medium), orange (high), red (urgent)
+
+4. Visual Hierarchy:
+   - Cards use subtle shadows (shadow-sm) with hover states (shadow-md)
+   - Borders for separation (border-gray-200)
+   - Consistent padding inside cards (p-3, p-4)
+   - Clear visual grouping with borders and spacing
+
+RESPONSIVENESS APPROACH
+-----------------------
+
+1. Mobile-First Strategy (375-414px):
+   - Kanban columns: Horizontal scroll with flex layout
+   - Task drawer: Full-width overlay with slide-in animation
+   - List view: Card-style stacked layout with all info visible
+   - TopBar: Compact layout with icon-only buttons, smaller text
+   - Search bar: Reduced width, expandable on focus
+
+2. Tablet (768px - 1279px):
+   - Kanban: 2-3 columns visible, smooth horizontal scroll
+   - List view: Maintains card style with better spacing
+   - TopBar: Shows some text labels alongside icons
+
+3. Desktop (≥1280px):
+   - Kanban: All 4 columns visible side-by-side
+   - Task drawer: Fixed 384px width (w-96) on the right
+   - List view: Full table layout with grid system (grid-cols-12)
+   - TopBar: Full labels and optimal spacing
+
+4. Breakpoint Strategy:
+   - sm: 640px (small adjustments)
+   - md: 768px (show more text)
+   - lg: 1024px (switch to desktop layouts)
+   - Used Tailwind's responsive prefixes (sm:, md:, lg:) consistently
+
+WIREFRAME → REACT MAPPING
+--------------------------
+
+1. Kanban Board:
+   Wireframe Element → React Component
+   - Top bar → TopBar.jsx (with Container wrapper)
+   - Board title → h1 in TopBar
+   - Project selector → <select> in TopBar
+   - Search bar → Input with SearchIcon in TopBar
+   - Filter button → Button with FilterIcon in TopBar
+   - New Task button → Button with PlusIcon in TopBar
+   - Kanban columns → KanbanColumn.jsx (mapped from columns array)
+   - Task cards → TaskCard.jsx (mapped from mockTasks data)
+   - Drag handle → SVG icon with hover opacity effect
+
+2. Task Details Drawer:
+   Wireframe Element → React Component
+   - Drawer container → TaskDrawer.jsx with slide animation
+   - Title field → Input with label
+   - Status dropdown → Select with options
+   - Priority dropdown → Select with options
+   - Assignee selector → Select with dynamic options from mockData
+   - Due date field → Date input
+   - Description area → Textarea
+   - Comments section → Mapped from task.commentsList array
+   - Activity log → Mapped from task.activityLog array
+   - Action buttons → Cancel and Save buttons
+
+3. List View:
+   Wireframe Element → React Component
+   - Toolbar → Same TopBar component (reused)
+   - Table header → Grid layout with column labels (hidden on mobile)
+   - Task rows → TaskRow.jsx with dual layout (mobile card / desktop grid)
+   - Status column → StatusBadge component
+   - Priority column → Badge component
+   - Assignee column → Avatar + name
+   - Actions menu → Three-dot button (placeholder)
+
+TECHNICAL IMPLEMENTATION DETAILS
+---------------------------------
+
+1. State Management:
+   - Local state with useState for drawer open/close
+   - Search functionality with useMemo for performance
+   - Selected task state for drawer content
+
+2. Routing:
+   - React Router DOM for navigation between Kanban and List views
+   - Clean URLs: /kanban and /list
+   - Navigate component for default redirect
+
+3. Data Structure:
+   - Mock data in separate file (mockData.js)
+   - Each task includes: id, title, status, priority, assignee, dueDate, comments, 
+     attachments, description, commentsList, activityLog
+   - Bengali language content for realistic local context
+
+4. Performance Optimizations:
+   - useMemo for filtered tasks (search functionality)
+   - Component-level code splitting ready
+   - Minimal re-renders with proper state management
+   - Efficient CSS with Tailwind's purge in production
+
+5. Accessibility Considerations:
+   - Semantic HTML elements (header, button, select, input)
+   - Proper labels for form fields
+   - Keyboard navigation support
+   - Focus states on interactive elements
+   - ARIA-friendly structure
+
+6. Code Organization:
+   /src
+     /components
+       /common       - Reusable UI components
+       /drawer       - Task drawer component
+       /kanban       - Kanban-specific components
+       /list         - List view components
+       /Icons        - SVG icon library
+     /pages          - Route-level components
+     /data           - Mock data
+     /lib            - Utility functions (cn for className merging)
+
+DESIGN PATTERNS USED
+--------------------
+
+1. Composition: Components built from smaller reusable pieces
+2. Container/Presentational: Separation of logic and UI
+3. Render Props: Flexible component APIs
+4. Controlled Components: Form inputs managed by React state
+5. Single Responsibility: Each component has one clear purpose
+
+FUTURE ENHANCEMENTS (Not Required)
+-----------------------------------
+
+1. Drag-and-drop functionality with react-beautiful-dnd or dnd-kit
+2. Real API integration
+3. Task creation/editing with form validation
+4. Filtering by status, priority, assignee
+5. Sorting options
+6. Dark mode support
+7. Keyboard shortcuts
+8. Task dependencies visualization
+9. Time tracking
+10. File attachments upload
+
+BROWSER COMPATIBILITY
+---------------------
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- CSS Grid and Flexbox support required
+- ES6+ JavaScript features used
+- Tailwind CSS v3.4+ compatible
+
+DEPLOYMENT NOTES
+----------------
+- Build command: npm run build
+- Output directory: dist/
+- Optimized for static hosting (Vercel, Netlify, GitHub Pages)
+- Environment variables: None required (static mock data)
+- No backend dependencies
