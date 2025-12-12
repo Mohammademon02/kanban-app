@@ -28,7 +28,6 @@ function KanbanPage() {
         )
     }, [searchQuery])
 
-    console.log("filteredTasks", filteredTasks)
 
     return (
         <>

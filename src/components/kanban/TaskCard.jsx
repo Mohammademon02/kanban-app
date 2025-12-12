@@ -1,7 +1,13 @@
+import Avatar from "../common/Avatar"
+import { Badge } from "../common/Badge"
+// import PriorityBadge from "../common/PriorityBadge"
 import { AttachmentIcon, CalenderIcon, CommentIcon } from "../Icons/icon-library"
 
 
 function TaskCard({ task, onClick }) {
+
+  console.log("task",task)
+
   return (
     <div
       onClick={onClick}
@@ -19,7 +25,9 @@ function TaskCard({ task, onClick }) {
             <circle cx="15" cy="18" r="1.5" />
           </svg>
         </div>
-        {/* <PriorityBadge priority={task.priority} /> */}
+
+        <Badge
+          label={task.priority} />
       </div>
 
       {/* Title */}
@@ -50,7 +58,7 @@ function TaskCard({ task, onClick }) {
         </div>
 
         {/* Assignee Avatar */}
-        {/* <Avatar name={task.assignee} size="sm" /> */}
+        <Avatar name={task.assignee} size="sm" />
       </div>
     </div>
   )
