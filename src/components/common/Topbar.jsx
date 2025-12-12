@@ -1,6 +1,6 @@
 import { BoardIcon, ListIcon, SearchIcon, CloseIcon, FilterIcon, PlusIcon } from '../Icons/icon-library';
 
-function TopBar({onViewChange, currentView}) {
+function TopBar({ onViewChange, currentView, searchQuery, onSearchChange }) {
     return (
         <header className="bg-white border-b border-gray-200 px-4 py-3 lg:px-6">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -46,13 +46,19 @@ function TopBar({onViewChange, currentView}) {
                         <input
                             type="text"
                             placeholder="Search tasks..."
+                            value={searchQuery}
+                            onChange={(e) => onSearchChange(e.target.value)}
                             className="pl-9 pr-8 py-1.5 text-sm border border-gray-300 rounded-md w-48 lg:w-56 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
-                        <button
-                            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600"
-                        >
-                            <CloseIcon />
-                        </button>
+
+                        {searchQuery && (
+                            <button
+                            onClick={() => onSearchChange("")}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600"
+                            >
+                                <CloseIcon />
+                            </button>
+                        )}
                     </div>
 
                     {/* Filter Button */}
