@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 import Avatar from "../common/Avatar"
+import { mockTasks } from "../../data/mockData"
 
 function TaskDrawer({ isOpen, onClose, task }) {
+  // Get unique assignees from mockData
+  const uniqueAssignees = [...new Set(mockTasks.map(task => task.assignee))].sort()
   const [title, setTitle] = useState("")
   const [status, setStatus] = useState("")
   const [priority, setPriority] = useState("")
@@ -21,7 +24,7 @@ function TaskDrawer({ isOpen, onClose, task }) {
       setTitle("")
       setStatus("")
       setPriority("low")
-      setAssignee("Sarah Chen")
+      setAssignee(uniqueAssignees[0] || "")
       setDueDate("")
       setDescription("")
     }
@@ -114,11 +117,11 @@ function TaskDrawer({ isOpen, onClose, task }) {
               onChange={(e) => setAssignee(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-              <option>Sarah Chen</option>
-              <option>John Doe</option>
-              <option>Emma Wilson</option>
-              <option>Mike Johnson</option>
-              <option>Lisa Park</option>
+              {uniqueAssignees.map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
             </select>
           </div>
 
