@@ -9,6 +9,18 @@ export const mockTasks = [
         comments: 5,
         attachments: 2,
         description: "Create wireframes and prototypes for the new user onboarding experience.",
+        commentsList: [
+            { id: 1, author: "Sarah Chen", text: "Updated the requirements document. Please review the changes.", time: "2 hours ago" },
+            { id: 2, author: "John Doe", text: "Looks good! Let's move forward with the implementation.", time: "Yesterday" },
+            { id: 3, author: "Emma Wilson", text: "I have some suggestions for the mobile flow.", time: "2 days ago" },
+            { id: 4, author: "Mike Johnson", text: "Can we schedule a meeting to discuss this?", time: "3 days ago" },
+            { id: 5, author: "Lisa Park", text: "Great work on the initial designs!", time: "4 days ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Sarah Chen", action: "changed status to", value: "Backlog", time: "3 hours ago", icon: "edit" },
+            { id: 2, type: "create", user: "Mike Johnson", action: "created this task", time: "2 days ago", icon: "create" },
+            { id: 3, type: "assign", user: "Mike Johnson", action: "assigned", value: "Sarah Chen", time: "2 days ago", icon: "user" },
+        ],
     },
     {
         id: 2,
@@ -20,6 +32,15 @@ export const mockTasks = [
         comments: 3,
         attachments: 0,
         description: "Set up OAuth 2.0 authentication with Google and GitHub providers.",
+        commentsList: [
+            { id: 1, author: "John Doe", text: "Starting work on OAuth integration.", time: "1 hour ago" },
+            { id: 2, author: "Sarah Chen", text: "Make sure to handle token refresh properly.", time: "5 hours ago" },
+            { id: 3, author: "Emma Wilson", text: "We should also add two-factor authentication.", time: "1 day ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "priority", user: "John Doe", action: "changed priority to", value: "Urgent", time: "1 hour ago", icon: "edit" },
+            { id: 2, type: "create", user: "Sarah Chen", action: "created this task", time: "3 days ago", icon: "create" },
+        ],
     },
     {
         id: 3,
@@ -31,6 +52,13 @@ export const mockTasks = [
         comments: 1,
         attachments: 1,
         description: "Review and update all API endpoint documentation.",
+        commentsList: [
+            { id: 1, author: "Emma Wilson", text: "I'll start with the authentication endpoints first.", time: "3 hours ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "assign", user: "Mike Johnson", action: "assigned", value: "Emma Wilson", time: "1 day ago", icon: "user" },
+            { id: 2, type: "create", user: "Mike Johnson", action: "created this task", time: "1 day ago", icon: "create" },
+        ],
     },
     {
         id: 4,
@@ -42,6 +70,22 @@ export const mockTasks = [
         comments: 8,
         attachments: 3,
         description: "Implement interactive charts for the analytics dashboard.",
+        commentsList: [
+            { id: 1, author: "Mike Johnson", text: "Chart library integration is complete.", time: "30 minutes ago" },
+            { id: 2, author: "Lisa Park", text: "The bar charts look great!", time: "2 hours ago" },
+            { id: 3, author: "Sarah Chen", text: "Can we add a date range filter?", time: "4 hours ago" },
+            { id: 4, author: "Mike Johnson", text: "Yes, I'll add that feature next.", time: "3 hours ago" },
+            { id: 5, author: "John Doe", text: "Don't forget about mobile responsiveness.", time: "1 day ago" },
+            { id: 6, author: "Emma Wilson", text: "We need tooltips on hover.", time: "1 day ago" },
+            { id: 7, author: "Mike Johnson", text: "Tooltips are already implemented.", time: "1 day ago" },
+            { id: 8, author: "Lisa Park", text: "Excellent work so far!", time: "2 days ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Mike Johnson", action: "changed status to", value: "In Progress", time: "1 hour ago", icon: "edit" },
+            { id: 2, type: "comment", user: "Sarah Chen", action: "added a comment", time: "4 hours ago", icon: "comment" },
+            { id: 3, type: "assign", user: "Sarah Chen", action: "assigned", value: "Mike Johnson", time: "3 days ago", icon: "user" },
+            { id: 4, type: "create", user: "Sarah Chen", action: "created this task", time: "3 days ago", icon: "create" },
+        ],
     },
     {
         id: 5,
@@ -53,6 +97,14 @@ export const mockTasks = [
         comments: 2,
         attachments: 0,
         description: "Address all mobile layout issues reported in the bug tracker.",
+        commentsList: [
+            { id: 1, author: "Lisa Park", text: "Fixed the navigation menu on mobile.", time: "1 hour ago" },
+            { id: 2, author: "John Doe", text: "Thanks! The sidebar still needs work.", time: "3 hours ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Lisa Park", action: "changed status to", value: "In Progress", time: "2 hours ago", icon: "edit" },
+            { id: 2, type: "create", user: "John Doe", action: "created this task", time: "1 day ago", icon: "create" },
+        ],
     },
     {
         id: 6,
@@ -64,6 +116,20 @@ export const mockTasks = [
         comments: 6,
         attachments: 2,
         description: "Set up Stripe integration for subscription payments.",
+        commentsList: [
+            { id: 1, author: "Sarah Chen", text: "Stripe API keys are configured.", time: "45 minutes ago" },
+            { id: 2, author: "Mike Johnson", text: "Make sure to test with test cards.", time: "2 hours ago" },
+            { id: 3, author: "Sarah Chen", text: "Already done! All tests passing.", time: "1 hour ago" },
+            { id: 4, author: "Emma Wilson", text: "Do we support international payments?", time: "5 hours ago" },
+            { id: 5, author: "Sarah Chen", text: "Yes, Stripe handles that automatically.", time: "4 hours ago" },
+            { id: 6, author: "John Doe", text: "Great progress!", time: "1 day ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "comment", user: "Sarah Chen", action: "added a comment", time: "45 minutes ago", icon: "comment" },
+            { id: 2, type: "priority", user: "Mike Johnson", action: "changed priority to", value: "Urgent", time: "6 hours ago", icon: "edit" },
+            { id: 3, type: "status", user: "Sarah Chen", action: "changed status to", value: "In Progress", time: "1 day ago", icon: "edit" },
+            { id: 4, type: "create", user: "Mike Johnson", action: "created this task", time: "2 days ago", icon: "create" },
+        ],
     },
     {
         id: 7,
@@ -75,6 +141,17 @@ export const mockTasks = [
         comments: 4,
         attachments: 0,
         description: "Review the new feature implementation and provide feedback.",
+        commentsList: [
+            { id: 1, author: "John Doe", text: "Code looks clean, just a few minor suggestions.", time: "1 hour ago" },
+            { id: 2, author: "Lisa Park", text: "Thanks for the review!", time: "2 hours ago" },
+            { id: 3, author: "Sarah Chen", text: "I agree with John's feedback.", time: "3 hours ago" },
+            { id: 4, author: "Lisa Park", text: "I'll make those changes now.", time: "2 hours ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Lisa Park", action: "changed status to", value: "Review", time: "4 hours ago", icon: "edit" },
+            { id: 2, type: "assign", user: "Sarah Chen", action: "assigned", value: "John Doe", time: "1 day ago", icon: "user" },
+            { id: 3, type: "create", user: "Lisa Park", action: "created this task", time: "1 day ago", icon: "create" },
+        ],
     },
     {
         id: 8,
@@ -86,6 +163,20 @@ export const mockTasks = [
         comments: 7,
         attachments: 1,
         description: "Analyze and document performance bottlenecks.",
+        commentsList: [
+            { id: 1, author: "Emma Wilson", text: "Found several areas for improvement.", time: "30 minutes ago" },
+            { id: 2, author: "Mike Johnson", text: "Can you share the report?", time: "1 hour ago" },
+            { id: 3, author: "Emma Wilson", text: "Just uploaded it to the attachments.", time: "45 minutes ago" },
+            { id: 4, author: "John Doe", text: "The database queries need optimization.", time: "2 hours ago" },
+            { id: 5, author: "Emma Wilson", text: "Yes, that's the main bottleneck.", time: "1 hour ago" },
+            { id: 6, author: "Sarah Chen", text: "Should we create separate tasks for each issue?", time: "3 hours ago" },
+            { id: 7, author: "Emma Wilson", text: "Good idea, I'll create them after review.", time: "2 hours ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Emma Wilson", action: "changed status to", value: "Review", time: "1 hour ago", icon: "edit" },
+            { id: 2, type: "comment", user: "Emma Wilson", action: "added a comment", time: "1 hour ago", icon: "comment" },
+            { id: 3, type: "create", user: "Mike Johnson", action: "created this task", time: "2 days ago", icon: "create" },
+        ],
     },
     {
         id: 9,
@@ -97,6 +188,15 @@ export const mockTasks = [
         comments: 2,
         attachments: 0,
         description: "Refresh the user profile UI with the new design system.",
+        commentsList: [
+            { id: 1, author: "Mike Johnson", text: "All done! Ready for deployment.", time: "1 day ago" },
+            { id: 2, author: "Sarah Chen", text: "Looks perfect!", time: "1 day ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Mike Johnson", action: "changed status to", value: "Done", time: "1 day ago", icon: "edit" },
+            { id: 2, type: "status", user: "Mike Johnson", action: "changed status to", value: "Review", time: "2 days ago", icon: "edit" },
+            { id: 3, type: "create", user: "Sarah Chen", action: "created this task", time: "5 days ago", icon: "create" },
+        ],
     },
     {
         id: 10,
@@ -108,6 +208,19 @@ export const mockTasks = [
         comments: 5,
         attachments: 2,
         description: "Configure GitHub Actions for automated testing and deployment.",
+        commentsList: [
+            { id: 1, author: "Lisa Park", text: "Pipeline is working perfectly!", time: "3 days ago" },
+            { id: 2, author: "John Doe", text: "Great job on the setup.", time: "3 days ago" },
+            { id: 3, author: "Emma Wilson", text: "Can we add staging deployment too?", time: "4 days ago" },
+            { id: 4, author: "Lisa Park", text: "Already included!", time: "4 days ago" },
+            { id: 5, author: "Mike Johnson", text: "This will save us so much time.", time: "5 days ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Lisa Park", action: "changed status to", value: "Done", time: "3 days ago", icon: "edit" },
+            { id: 2, type: "status", user: "Lisa Park", action: "changed status to", value: "Review", time: "4 days ago", icon: "edit" },
+            { id: 3, type: "status", user: "Lisa Park", action: "changed status to", value: "In Progress", time: "6 days ago", icon: "edit" },
+            { id: 4, type: "create", user: "John Doe", action: "created this task", time: "7 days ago", icon: "create" },
+        ],
     },
     {
         id: 11,
@@ -119,6 +232,13 @@ export const mockTasks = [
         comments: 1,
         attachments: 0,
         description: "Add comprehensive unit tests for all utility functions.",
+        commentsList: [
+            { id: 1, author: "Sarah Chen", text: "100% code coverage achieved!", time: "5 days ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "Sarah Chen", action: "changed status to", value: "Done", time: "5 days ago", icon: "edit" },
+            { id: 2, type: "create", user: "Mike Johnson", action: "created this task", time: "8 days ago", icon: "create" },
+        ],
     },
     {
         id: 12,
@@ -130,5 +250,15 @@ export const mockTasks = [
         comments: 3,
         attachments: 1,
         description: "Migrate the database schema to support new features.",
+        commentsList: [
+            { id: 1, author: "John Doe", text: "Migration completed successfully.", time: "7 days ago" },
+            { id: 2, author: "Emma Wilson", text: "No issues found in production.", time: "7 days ago" },
+            { id: 3, author: "Mike Johnson", text: "Excellent work!", time: "8 days ago" },
+        ],
+        activityLog: [
+            { id: 1, type: "status", user: "John Doe", action: "changed status to", value: "Done", time: "7 days ago", icon: "edit" },
+            { id: 2, type: "status", user: "John Doe", action: "changed status to", value: "In Progress", time: "9 days ago", icon: "edit" },
+            { id: 3, type: "create", user: "Sarah Chen", action: "created this task", time: "10 days ago", icon: "create" },
+        ],
     },
 ]

@@ -27,7 +27,7 @@ function TaskDrawer({ isOpen, onClose, task }) {
     }
   }, [task])
 
-  
+
   return (
     <>
       {/* Overlay */}
@@ -150,107 +150,87 @@ function TaskDrawer({ isOpen, onClose, task }) {
           </div>
 
           {/* Comments Section */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-              Comments ({task?.comments || 0})
-            </label>
-            <div className="space-y-3">
-              {/* Comment Input */}
-              <div className="flex gap-3">
-                <Avatar name="You" size="sm" />
-                <input
-                  type="text"
-                  placeholder="Add a comment..."
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
+          <div className="border-t border-gray-200 pt-4">
+            <div className="flex items-center gap-2 mb-4">
+              <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Comments ({task?.commentsList?.length || 0})
+              </h3>
+            </div>
 
-              {/* Existing Comments */}
-              <div className="space-y-3 pt-2">
-                <div className="flex gap-3">
-                  <Avatar name="Sarah Chen" size="sm" />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-900">Sarah Chen</span>
-                      <span className="text-xs text-gray-500">2 hours ago</span>
+            {/* Existing Comments */}
+            {task?.commentsList && task.commentsList.length > 0 && (
+              <div className="space-y-4 mb-4">
+                {task.commentsList.map((comment) => (
+                  <div key={comment.id} className="flex gap-3">
+                    <Avatar name={comment.author} size="sm" />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm font-semibold text-gray-900">{comment.author}</span>
+                        <span className="text-xs text-gray-500">{comment.time}</span>
+                      </div>
+                      <p className="text-sm text-gray-700">{comment.text}</p>
                     </div>
-                    <p className="text-sm text-gray-600 mt-0.5">
-                      Updated the requirements document. Please review the changes.
-                    </p>
                   </div>
-                </div>
-                <div className="flex gap-3">
-                  <Avatar name="John Doe" size="sm" />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-900">John Doe</span>
-                      <span className="text-xs text-gray-500">Yesterday</span>
-                    </div>
-                    <p className="text-sm text-gray-600 mt-0.5">
-                      {"Looks good! Let's move forward with the implementation."}
-                    </p>
-                  </div>
-                </div>
+                ))}
+              </div>
+            )}
+
+            {/* Comment Input */}
+            <div className="space-y-3">
+              <textarea
+                placeholder="Add a comment..."
+                rows={3}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+              />
+              <div className="flex justify-end">
+                <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-md transition-colors">
+                  Add Comment
+                </button>
               </div>
             </div>
           </div>
 
           {/* Activity Log */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Activity</label>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">
-                    <span className="font-medium text-gray-900">Sarah Chen</span> changed status to{" "}
-                    <span className="font-medium">In Progress</span>
-                  </p>
-                  <span className="text-xs text-gray-500">3 hours ago</span>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">
-                    <span className="font-medium text-gray-900">Mike Johnson</span> created this task
-                  </p>
-                  <span className="text-xs text-gray-500">2 days ago</span>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">
-                    <span className="font-medium text-gray-900">Mike Johnson</span> assigned{" "}
-                    <span className="font-medium">Sarah Chen</span>
-                  </p>
-                  <span className="text-xs text-gray-500">2 days ago</span>
-                </div>
-              </div>
+          <div className="border-t border-gray-200 pt-4">
+            <div className="flex items-center gap-2 mb-4">
+              <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Activity Log</h3>
             </div>
+
+            {task?.activityLog && task.activityLog.length > 0 && (
+              <div className="space-y-4">
+                {task.activityLog.map((activity) => (
+                  <div key={activity.id} className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0 mt-2" />
+                    <div className="flex-1">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-gray-900">{activity.user}</span> {activity.action}
+                        {activity.value && <span className="font-semibold text-gray-900"> {activity.value}</span>}
+                      </p>
+                      <span className="text-xs text-gray-500">{activity.time}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3 pt-4 border-t border-gray-200">
+            <button
+              onClick={onClose}
+              className="flex-1 px-4 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-md transition-colors"
+            >
+              Cancel
+            </button>
+            <button className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-md transition-colors">
+              Save Changes
+            </button>
           </div>
         </div>
       </div>
