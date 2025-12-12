@@ -45,6 +45,10 @@ function KanbanPage() {
                 currentView="kanban"
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
+                onNewTaskClick={() => {
+                    setSelectedTask(null)
+                    setDrawerOpen(true)
+                }}
             />
             <Container className="py-4">
                 <div className="flex-1 overflow-auto">

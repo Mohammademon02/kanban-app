@@ -9,7 +9,6 @@ function TaskDrawer({ isOpen, onClose, task }) {
   const [dueDate, setDueDate] = useState("")
   const [description, setDescription] = useState("")
 
-  // Update form values when task changes
   useEffect(() => {
     if (task) {
       setTitle(task.title || "")
@@ -18,6 +17,13 @@ function TaskDrawer({ isOpen, onClose, task }) {
       setAssignee(task.assignee || "")
       setDueDate(task.dueDate || "")
       setDescription(task.description || "")
+    } else {
+      setTitle("")
+      setStatus("")
+      setPriority("low")
+      setAssignee("Sarah Chen")
+      setDueDate("")
+      setDescription("")
     }
   }, [task])
 
@@ -73,6 +79,7 @@ function TaskDrawer({ isOpen, onClose, task }) {
                 onChange={(e) => setStatus(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
+                <option disabled>Select Status</option>
                 <option value="backlog">Backlog</option>
                 <option value="in-progress">In Progress</option>
                 <option value="review">Review</option>
@@ -88,6 +95,7 @@ function TaskDrawer({ isOpen, onClose, task }) {
                 onChange={(e) => setPriority(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
+                <option disabled>Select Priority</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>

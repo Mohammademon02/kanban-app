@@ -1,7 +1,7 @@
 import { BoardIcon, ListIcon, SearchIcon, CloseIcon, FilterIcon, PlusIcon } from '../Icons/icon-library';
 import Container from './Container';
 
-function TopBar({ onViewChange, currentView, searchQuery, onSearchChange }) {
+function TopBar({ onViewChange, currentView, searchQuery, onSearchChange, onNewTaskClick }) {
     return (
         <header className="bg-white border-b border-gray-200 ">
             <Container className="py-3">
@@ -70,7 +70,10 @@ function TopBar({ onViewChange, currentView, searchQuery, onSearchChange }) {
                         </button>
 
                         {/* New Task Button */}
-                        <button className="flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+                        <button
+                            onClick={onNewTaskClick}
+                            className="flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
+                        >
                             <PlusIcon />
                             New Task
                         </button>
