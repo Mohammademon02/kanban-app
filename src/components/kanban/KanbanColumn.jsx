@@ -19,7 +19,7 @@ function KanbanColumn({ title, color, tasks, onTaskClick }) {
       </div>
 
       {/* Tasks Container */}
-      <div className="flex flex-col gap-3 p-2 bg-gray-100 rounded-lg min-h-[700px]">
+      <div className="flex flex-col gap-3 p-2 bg-gray-100 rounded-lg min-h-[700px] max-h-[700px] overflow-y-auto">
         {tasks.map((task) => (
           <TaskCard key={task.id} task={task} onClick={() => onTaskClick(task)} />
         ))}
