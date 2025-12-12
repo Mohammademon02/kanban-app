@@ -5,7 +5,14 @@ import { AttachmentIcon, CalenderIcon, CommentIcon } from "../Icons/icon-library
 
 
 function TaskCard({ task, onClick }) {
-
+  
+  const formatDate = (dateStr) => {
+    if (!dateStr) return ""
+    const date = new Date(dateStr)
+    const month = date.toLocaleDateString("en-US", { month: "short" })
+    const day = date.getDate()
+    return `${month} ${day}`
+  }
 
   return (
     <div
@@ -38,7 +45,7 @@ function TaskCard({ task, onClick }) {
           {/* Due Date */}
           <span className="flex items-center gap-1 text-xs">
             <CalenderIcon />
-            {task.dueDate}
+            {formatDate(task.dueDate)}
           </span>
 
           {/* Comments */}

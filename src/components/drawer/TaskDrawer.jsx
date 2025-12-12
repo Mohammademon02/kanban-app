@@ -1,25 +1,40 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Avatar from "../common/Avatar"
 
 function TaskDrawer({ isOpen, onClose, task }) {
-  const [description, setDescription] = useState(task?.description || "")
+  const [title, setTitle] = useState("")
+  const [status, setStatus] = useState("")
+  const [priority, setPriority] = useState("")
+  const [assignee, setAssignee] = useState("")
+  const [dueDate, setDueDate] = useState("")
+  const [description, setDescription] = useState("")
+
+  // Update form values when task changes
+  useEffect(() => {
+    if (task) {
+      setTitle(task.title || "")
+      setStatus(task.status || "")
+      setPriority(task.priority || "")
+      setAssignee(task.assignee || "")
+      setDueDate(task.dueDate || "")
+      setDescription(task.description || "")
+    }
+  }, [task])
 
   console.log(task)
   return (
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         onClick={onClose}
       />
 
       {/* Drawer */}
       <div
-        className={`fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-xl border-l border-gray-200 z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-xl border-l border-gray-200 z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Header */}
         <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between z-10">
@@ -41,7 +56,8 @@ function TaskDrawer({ isOpen, onClose, task }) {
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Title</label>
             <input
               type="text"
-              defaultValue={task?.title}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
@@ -53,7 +69,8 @@ function TaskDrawer({ isOpen, onClose, task }) {
                 Status
               </label>
               <select
-                defaultValue={task?.status}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="backlog">Backlog</option>
@@ -67,7 +84,8 @@ function TaskDrawer({ isOpen, onClose, task }) {
                 Priority
               </label>
               <select
-                defaultValue={task?.priority}
+                value={priority}
+                onChange={(e) => setPriority(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="low">Low</option>
@@ -84,7 +102,8 @@ function TaskDrawer({ isOpen, onClose, task }) {
               Assignee
             </label>
             <select
-              defaultValue={task?.assignee}
+              value={assignee}
+              onChange={(e) => setAssignee(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option>Sarah Chen</option>
@@ -102,7 +121,8 @@ function TaskDrawer({ isOpen, onClose, task }) {
             </label>
             <input
               type="date"
-              defaultValue="2024-12-20"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
