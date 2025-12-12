@@ -3,7 +3,7 @@ import TaskCard from "./TaskCard"
 
 function KanbanColumn({ title, color, tasks, onTaskClick }) {
   return (
-    <div className="flex-shrink-0 w-72 lg:w-80">
+    <div className="flex-shrink-0 w-72 lg:w-[342px]">
       {/* Column Header */}
       <div className="flex items-center justify-between mb-3 px-1">
         <div className="flex items-center gap-2">

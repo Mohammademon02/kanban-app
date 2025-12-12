@@ -3,6 +3,7 @@ import TopBar from "../components/common/Topbar"
 import KanbanBoard from "../components/kanban/KanbanBoard"
 import { mockTasks } from "../data/mockData"
 import { useMemo, useState } from "react"
+import Container from "../components/common/Container"
 
 
 function KanbanPage() {
@@ -30,20 +31,20 @@ function KanbanPage() {
     console.log("filteredTasks", filteredTasks)
 
     return (
-        <div className="flex flex-col h-screen">
+        <>
             <TopBar
                 onViewChange={handleViewChange}
                 currentView="kanban"
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
             />
-            <div className="flex flex-1 overflow-hidden">
+            <Container className="py-4">
                 <div className="flex-1 overflow-auto">
                     <KanbanBoard tasks={filteredTasks} />
                 </div>
                 {/* <TaskDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} task={selectedTask || mockTasks[0]} /> */}
-            </div>
-        </div>
+            </Container>
+        </>
     )
 }
 
