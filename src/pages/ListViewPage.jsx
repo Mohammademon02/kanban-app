@@ -4,6 +4,7 @@ import TopBar from "../components/common/Topbar"
 import TaskDrawer from "../components/drawer/TaskDrawer"
 import { mockTasks } from "../data/mockData"
 import TaskListView from "../components/list/TaskListView"
+import Container from "../components/common/Container"
 
 
 
@@ -34,7 +35,7 @@ function ListViewPage() {
   }, [searchQuery])
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="h-screen">
       <TopBar
         onViewChange={handleViewChange}
         currentView="list"
@@ -46,12 +47,12 @@ function ListViewPage() {
         }}
 
       />
-      <div className="flex flex-1 overflow-hidden">
+      <Container className="py-4">
         <div className="flex-1 overflow-auto">
           <TaskListView tasks={filteredTasks} onTaskClick={handleTaskClick} />
         </div>
         <TaskDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} task={selectedTask} />
-      </div>
+      </Container>
     </div>
   )
 }

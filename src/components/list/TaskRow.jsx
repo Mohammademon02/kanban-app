@@ -1,8 +1,10 @@
 import Avatar from "../common/Avatar"
 import { Badge } from "../common/Badge"
-import StatusBadge from "../common/StatusBadge"
+import { StatusBadge } from "../common/StatusBadge"
 
 function TaskRow({ task, onClick }) {
+
+  console.log("task",task)
   return (
     <div onClick={onClick} className="cursor-pointer hover:bg-gray-50 transition-colors">
       {/* Mobile View - Card Style */}
@@ -18,9 +20,8 @@ function TaskRow({ task, onClick }) {
           </button>
         </div>
         <div className="flex flex-wrap items-center gap-2 mt-3">
-          <StatusBadge status={task.status} />
-          <Badge
-            label={task.priority} />
+          <StatusBadge label={task.status} />
+          <Badge label={task.priority} />
           <span className="flex items-center gap-1 text-xs text-gray-500">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -58,7 +59,7 @@ function TaskRow({ task, onClick }) {
           <h4 className="font-medium text-gray-900 truncate">{task.title}</h4>
         </div>
         <div className="col-span-2">
-          <StatusBadge status={task.status} />
+          <StatusBadge label={task.status} />
         </div>
         <div className="col-span-2 flex items-center gap-2">
           <Avatar name={task.assignee} size="sm" />

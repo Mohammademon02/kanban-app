@@ -27,7 +27,7 @@ function TaskDrawer({ isOpen, onClose, task }) {
     }
   }, [task])
 
-  console.log(task)
+  
   return (
     <>
       {/* Overlay */}

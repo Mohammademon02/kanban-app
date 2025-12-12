@@ -2,7 +2,7 @@ import TaskRow from "./TaskRow"
 
 function TaskListView({ tasks, onTaskClick }) {
   return (
-    <div className="p-4 lg:p-6">
+    <div>
       {/* Desktop Table Header */}
       <div className="hidden lg:grid lg:grid-cols-12 gap-4 px-4 py-3 bg-gray-100 rounded-t-lg text-xs font-semibold text-gray-600 uppercase tracking-wider">
         <div className="col-span-4">Task</div>
