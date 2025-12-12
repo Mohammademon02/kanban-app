@@ -150,7 +150,7 @@ Consistent 4px base unit using Tailwind utilities (p-2, p-3, p-4, gap-2, gap-3, 
 
 ## Live Demo
 
-[Add your deployment URL here]
+https://kanban-app-dusky.vercel.app/kanban
 
 ## Implementation Notes
 
@@ -168,10 +168,7 @@ See `notes.txt` for detailed information about:
 - Safari (latest)
 - Edge (latest)
 
-## License
-
-Private - Gain Solutions Limited
 
 ## Author
 
-[Md Emon]
+Md Emon
