@@ -4,10 +4,13 @@ import KanbanBoard from "../components/kanban/KanbanBoard"
 import { mockTasks } from "../data/mockData"
 import { useMemo, useState } from "react"
 import Container from "../components/common/Container"
+import TaskDrawer from "../components/drawer/TaskDrawer"
 
 
 function KanbanPage() {
     const navigate = useNavigate()
+    const [drawerOpen, setDrawerOpen] = useState(false)
+    const [selectedTask, setSelectedTask] = useState(null)
     const [searchQuery, setSearchQuery] = useState("")
 
 
@@ -15,6 +18,11 @@ function KanbanPage() {
         navigate(view === "kanban" ? "/kanban" : "/list")
     }
 
+
+    const handleTaskClick = (task) => {
+        setSelectedTask(task)
+        setDrawerOpen(true)
+    }
 
 
     const filteredTasks = useMemo(() => {
@@ -29,6 +37,7 @@ function KanbanPage() {
     }, [searchQuery])
 
 
+
     return (
         <>
             <TopBar
@@ -39,9 +48,9 @@ function KanbanPage() {
             />
             <Container className="py-4">
                 <div className="flex-1 overflow-auto">
-                    <KanbanBoard tasks={filteredTasks} />
+                    <KanbanBoard tasks={filteredTasks} onTaskClick={handleTaskClick} />
                 </div>
-                {/* <TaskDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} task={selectedTask || mockTasks[0]} /> */}
+                <TaskDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} task={selectedTask} />
             </Container>
         </>
     )

@@ -6,7 +6,6 @@ import { AttachmentIcon, CalenderIcon, CommentIcon } from "../Icons/icon-library
 
 function TaskCard({ task, onClick }) {
 
-  console.log("task",task)
 
   return (
     <div

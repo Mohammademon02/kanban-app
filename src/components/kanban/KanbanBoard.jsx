@@ -7,7 +7,7 @@ const columns = [
   { id: "done", title: "Done", color: "bg-green-500" },
 ]
 
-function KanbanBoard({ tasks }) {
+function KanbanBoard({ tasks, onTaskClick }) {
 
   const getTasksByStatus = (status) => {
     return tasks.filter((task) => task.status === status)
@@ -21,6 +21,7 @@ function KanbanBoard({ tasks }) {
           title={column.title}
           color={column.color}
           tasks={getTasksByStatus(column.id)}
+          onTaskClick={onTaskClick}
         />
       ))}
     </div>
